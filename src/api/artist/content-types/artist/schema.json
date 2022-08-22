@@ -4,7 +4,8 @@
   "info": {
     "singularName": "artist",
     "pluralName": "artists",
-    "displayName": "Artist"
+    "displayName": "Artist",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -37,6 +38,11 @@
       "relation": "oneToMany",
       "target": "api::artwork.artwork",
       "mappedBy": "artist"
+    },
+    "hide": {
+      "type": "boolean",
+      "default": false,
+      "required": true
     }
   }
 }

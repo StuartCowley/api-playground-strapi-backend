@@ -4,7 +4,8 @@
   "info": {
     "singularName": "collection",
     "pluralName": "collections",
-    "displayName": "Collection"
+    "displayName": "Collection",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -24,6 +25,11 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::artwork.artwork"
+    },
+    "hide": {
+      "type": "boolean",
+      "default": false,
+      "required": true
     }
   }
 }
