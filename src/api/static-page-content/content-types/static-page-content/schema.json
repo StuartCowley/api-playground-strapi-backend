@@ -1,0 +1,36 @@
+{
+  "kind": "singleType",
+  "collectionName": "static_page_contents",
+  "info": {
+    "singularName": "static-page-content",
+    "pluralName": "static-page-contents",
+    "displayName": "StaticPageContent"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "CollectionsPageTitle": {
+      "type": "string",
+      "required": true
+    },
+    "CollectionsPageIntroduction": {
+      "type": "text"
+    },
+    "ArtistsPageTitle": {
+      "type": "string",
+      "required": true
+    },
+    "ArtistsPageIntroduction": {
+      "type": "text"
+    },
+    "ArtworksPageTitle": {
+      "type": "string",
+      "required": true
+    },
+    "ArtworksPageIntroduction": {
+      "type": "text"
+    }
+  }
+}

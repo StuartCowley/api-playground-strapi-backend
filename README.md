@@ -3,27 +3,27 @@
 This is the prototype backend for the booth centre CMS. 
 
 ## Content types and structure
-The API is built with the following collection types:
+The API is built with the following collection types. These are schemas for data that is repeated such as artworks:
 
 ### Artist
 | Field Name   | Type                | Required | Description                            |
 | ------------ | ------------------- |  :-----: | -------------------------------------- |
-| name         | String              |    [x]   | The artists real name. Needed for booth centre staff to identify the artist |
-| anonymous    | Boolean             |    [x]   | If selected, artists work will appear on site, but pseudonym will be used in place of their real name |
+| name         | String              | &check;  | The artists real name. Needed for booth centre staff to identify the artist |
+| anonymous    | Boolean             | &check;  | If selected, artists work will appear on site, but pseudonym will be used in place of their real name |
 | pseudonym    | String              |          | The artists chosen pseudonym. Required if `anonymous` is selected (must also be a unique value) |
-| hide         | Boolean             |    [x]   | If selected, artist will not be shown on site |
+| hide         | Boolean             | &check;  | If selected, artist will not be shown on site |
 | introduction | String              |          | A description of the artist themselves |
-| passphrase   | String              |    [x]   | A short phrase chosen by the artist to authenticate themselves to booth cantre staff |
+| passphrase   | String              | &check;  | A short phrase chosen by the artist to authenticate themselves to booth cantre staff |
 | artworks     | Relation to artwork |          | All artworks associated with the artist. Selected using dropdown in interface |
 
 
 ### Artwork
 | Field Name   | Type                | Required | Description                            |
 | ------------ | ------------------- |  :-----: | -------------------------------------- |
-| title        | String              |    [x]   | The artists real name. Needed for booth centre staff to identify the artist |
-| description  | String              |    [x]   | A short description of the piece of artwork |
-| medium       | Enumeration         |    [x]   | One of the given values of `Drama performance`, `Painting`, `Poem`, `Sculpture` or `Story` |
-| hide         | Boolean             |    [x]   | If selected, artwork will not be shown on site |
+| title        | String              | &check;  | The artists real name. Needed for booth centre staff to identify the artist |
+| description  | String              | &check;  | A short description of the piece of artwork |
+| medium       | Enumeration         | &check;  | One of the given values of `Drama performance`, `Painting`, `Poem`, `Sculpture` or `Story` |
+| hide         | Boolean             | &check;  | If selected, artwork will not be shown on site |
 | artist       | Relation to artist  |          | Artist who completed the work. Selected using dropdown in interface |
 | textContent  | String              |          | The work itself (if text based) |
 | mediaContent | String              |          | The work itself, if a non text based format |
@@ -32,9 +32,9 @@ The API is built with the following collection types:
 ### Collection
 | Field Name   | Type                 | Required | Description                            |
 | ------------ | -------------------- |  :-----: | -------------------------------------- |
-| title        | String               |    [x]   | The title of the collection of pieces of art |
-| description  | String               |    [x]   | A description of the collection |
-| hide         | Boolean              |    [x]   | If selected, the collection will not be shown on site |
+| title        | String               | &check;  | The title of the collection of pieces of art |
+| description  | String               | &check;  | A description of the collection |
+| hide         | Boolean              | &check;  | If selected, the collection will not be shown on site |
 | artworks     | Relation to artworks |          | All artworks associated with the artist. Selected using dropdown in interface |
 
 While Strapi is very flexible and easy to use, there are a few issues with data that must be handled:
@@ -44,10 +44,23 @@ While most fields can be marked as required to prevent submission with empty val
 #### Storing of images and non text type files
 In the production environment, the application will be on a server with storage for all image files in the default `/uploads` directory provided by Strapi. This will behave in the same way as the local environment in terms of the file paths, to verify what is being stored in this database open `./tmp/data.db` in a database tool such as TablePlus
 
+
+### Single types
+Single types are used for fields that need to be editable, but are uniform throughout. To save on multiple API calls, a single collection type has been created for all static page content:
+
+### StaticPageContent
+| Field Name                   | Type      | Required | Description                            |
+| ---------------------------- | --------- |  :-----: | -------------------------------------- |
+| CollectionsPageTitle         | String    | &check;  | The text at the top of the collections page |
+| CollectionsPageIntroduction  | String    |          |  The introduction text for the collections page |
+| ArtistsPageTitle             | String    | &check;  | The text at the top of the artists page |
+| ArtistsPageIntroduction      | String    |          |  The introduction text for the artists page |
+| ArtworksPageTitle            | String    | &check;  | The text at the top of the artworks page |
+| ArtworksPageIntroduction     | String    |          |  The introduction text for the artworks page |
+
 ## Setup
 - The project must be run locally. Running `npm i` will install the project, create all the needed tables and will populate the interface (accessible at localhost:1337/admin), but will not provide any data.
 - A `.env` file must be created in the same format as `.env.example`
-
 
 ## Strapi info
 Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html) (CLI) which lets you scaffold and manage your project in seconds.
