@@ -62,6 +62,9 @@ Single types are used for fields that need to be editable, but are uniform throu
 - The project must be run locally. Running `npm i` will install the project, create all the needed tables and will populate the interface (accessible at localhost:1337/admin), but will not provide any data.
 - A `.env` file must be created in the same format as `.env.example`
 
+### Node version
+You  must have node version ^16.0.0 installed locally to run the project. Run `node --version` to check your currently used version, and if required a node version version such as [nvm](https://github.com/nvm-sh/nvm) or [n](https://github.com/tj/n) can be used to install it.
+
 ## Strapi info
 Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html) (CLI) which lets you scaffold and manage your project in seconds.
 
