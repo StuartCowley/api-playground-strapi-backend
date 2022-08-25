@@ -1,6 +1,6 @@
 # 🚀 Booth Centre Protoype Strapi API
 
-This is the prototype backend for the booth centre CMS. 
+This is the prototype backend for the booth centre CMS. The partner front end application is available for installation [here](https://github.com/StuartCowley/api-playground-strapi) and will be required to get the best of this application, see Setup step below for more details
 
 ## Content types and structure
 The API is built with the following collection types. These are schemas for data that is repeated such as artworks:
@@ -59,11 +59,14 @@ Single types are used for fields that need to be editable, but are uniform throu
 | ArtworksPageIntroduction     | String    |          |  The introduction text for the artworks page |
 
 ## Setup
-- The project must be run locally. Running `npm i` will install the project, create all the needed tables and will populate the interface (accessible at localhost:1337/admin), but will not provide any data.
+- The project must be run locally. Running `npm i` will install the project and create all the needed tables, then running `npm run develop` will start the application in development mode (with editing enabled), accessed by visiting `localhost:1337/admin`. The interface will be prepopulated by all the existing fields, but will not contain any data.
 - A `.env` file must be created in the same format as `.env.example`
+- Once running, start the front end application (follow instructions for installation in the [front end repo code](https://github.com/StuartCowley/api-playground-strapi)).
 
-### Node version
-You  must have node version ^16.0.0 installed locally to run the project. Run `node --version` to check your currently used version, and if required a node version version such as [nvm](https://github.com/nvm-sh/nvm) or [n](https://github.com/tj/n) can be used to install it.
+### Troubleshooting setup
+- **Node version**: You  must have node version ^16.0.0 installed locally to run the project. Run `node --version` to check your currently used version, and if required a node version version such as [nvm](https://github.com/nvm-sh/nvm) or [n](https://github.com/tj/n) can be used to install it.
+- If there are any 403 errors being generated, these can be fixed in the back end repo by going to Settings -> Roles (under `Users & permissions plugin`) -> Public, and setting permissions for all needed endpoints to `find` and `find-one`, then saving.
+- If these endpoints are now returning a 404 error, populate some data via the Content Manager interface, then save, publish, and refresh the front end application.
 
 ## Strapi info
 Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html) (CLI) which lets you scaffold and manage your project in seconds.
